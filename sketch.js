@@ -3,6 +3,8 @@ let pageNum = 1
 let IMAGE_NOKIA = null
 let IMAGE_WAVE = null
 
+let firstClick = false;
+
 function preload() {
   IMAGE_NOKIA = loadImage('assets/nokia.png')
   IMAGE_WAVE = loadImage('assets/wave.png')
@@ -16,7 +18,7 @@ function setup() {
   textWrap(WORD)
   textSize(30)
 
-  playBgAudio()
+ // playBgAudio()
   drawScene()
 }
 
@@ -59,6 +61,11 @@ function drawScene() {
 
 
 function mouseClicked() {
+  
+  if (firstClick === false) {
+    firstClick = true;
+    playBgAudio();
+  }
   pageNum++
   if (pageNum == 5) {
     pageNum = 1
